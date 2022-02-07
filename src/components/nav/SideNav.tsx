@@ -1,6 +1,5 @@
-import React, { FC } from 'react';
-import { useLinkClickHandler } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 
 interface Props {
   isSidebar: boolean;
@@ -15,7 +14,7 @@ const SideSlider = styled.div<{ isSidebar?: boolean }>`
   height: 100%;
   background-color: white;
   z-index: 10;
-  transition: transform 2s;
+  transition: transform 1s;
 `;
 const SlideSliderTitle = styled.div`
   height: 70px;
@@ -74,7 +73,6 @@ const SlideSliderBox = styled.div`
 `;
 
 const SideNav = ({ isSidebar, handle }: Props) => {
-  console.log(isSidebar);
   return (
     <SideSlider style={{ transform: isSidebar ? 'translateX(0vw)' : 'translateX(-100vw)' }}>
       <SlideSliderTitle>

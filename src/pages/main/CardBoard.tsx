@@ -56,7 +56,7 @@ const CardBoard: FC<InfoType> = (info: InfoType) => {
 };
 
 const Container = styled.article`
-  max-width: 366px;
+  max-width: 500px;
   max-height: 356px;
   display: flex;
   flex-direction: column;

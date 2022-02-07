@@ -28,7 +28,7 @@ const ToggleBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 179px;
+  width: 190px;
   & > button {
     border: none;
     background: #ffffff;

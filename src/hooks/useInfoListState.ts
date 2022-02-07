@@ -5,19 +5,20 @@ import * as infoListAPI from '../api/getInforList';
 
 const useInfoListState = ({ method, material, status }: OptionalProps) => {
   const [infoList, setInfoList] = useState<InfoType[]>([]);
-  const [sortedInfoList, setSortedInfoList] = useState<InfoType[]>([
-    {
-      id: 1,
-      title: '자동차 시품 제작',
-      client: 'A 고객사',
-      due: '2020.12.14',
-      count: 2,
-      amount: 100,
-      method: ['밀링', '선반'],
-      material: ['알루미늄'],
-      status: '대기중',
-    },
-  ]);
+  //   const [sortedInfoList, setSortedInfoList] = useState<InfoType[]>([
+  //     {
+  //       id: 1,
+  //       title: '자동차 시품 제작',
+  //       client: 'A 고객사',
+  //       due: '2020.12.14',
+  //       count: 2,
+  //       amount: 100,
+  //       method: ['밀링', '선반'],
+  //       material: ['알루미늄'],
+  //       status: '대기중',
+  //     },
+  //   ]);
+  const [sortedInfoList, setSortedInfoList] = useState<InfoType[]>([]);
 
   useEffect(() => {
     const getData = async () => {

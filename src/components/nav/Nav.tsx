@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { JsxAttributeLike } from 'typescript';
 import styled from 'styled-components';
 
 const NavContainer = styled.div`

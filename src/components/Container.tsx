@@ -58,6 +58,7 @@ const Container = ({ isSidebar }: Props) => {
         <FilterLayout />
       </Layout>
     </LayoutBox>
+
   );
 };
 export default Container;

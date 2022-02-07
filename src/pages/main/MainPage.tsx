@@ -1,6 +1,7 @@
 import React, { useState, useEffect, FC } from 'react';
 import type { infoType } from '../../types/components/infolist';
 import * as infoListAPI from '../../api/getInforList';
+import FilterLayout from '../../components/SetFilter/FilterLayout';
 
 const MainPage: FC = () => {
   const [infoList, setInfoList] = useState<infoType[] | null>(null);
@@ -19,7 +20,11 @@ const MainPage: FC = () => {
     console.log(infoList);
   }, [infoList]);
 
-  return <div />;
+  return (
+    <div>
+      <FilterLayout />
+    </div>
+  );
 };
 
 export default MainPage;

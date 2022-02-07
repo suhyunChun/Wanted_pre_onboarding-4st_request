@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import FilterLayout from './SetFilter/FilterLayout';
 
 const Layout = styled.div`
   display: flex;
@@ -13,6 +14,10 @@ const Layout = styled.div`
   left: 155px;
   top: 110px;
   overflow: hidden;
+  @media (max-width: 600px) {
+    left: 25px;
+    width: 90%;
+  }
 `;
 
 const TextHeader = styled.div`
@@ -34,6 +39,7 @@ const Container: FC = () => {
         <br />
         <span>파트너에게 딱 맞는 요청서를 찾아보세요</span>
       </TextHeader>
+      <FilterLayout />
     </Layout>
   );
 };

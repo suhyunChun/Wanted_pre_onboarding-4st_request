@@ -72,7 +72,7 @@ const Filter: FC = () => {
 
   return (
     <FilteringLayout>
-      <section onMouseEnter={showMethodBox} onMouseLeave={hiddenMethodBox}>
+      <FirstSection onMouseEnter={showMethodBox} onMouseLeave={hiddenMethodBox}>
         <DropdownBtn type="button">
           <p>가공방식{checkedMethods.length > 0 && <span>({checkedMethods.length})</span>}</p>
           <img alt="이미지" src="Image/arrowDropDown.png" />
@@ -94,9 +94,9 @@ const Filter: FC = () => {
             })}
           </UlBox>
         )}
-      </section>
+      </FirstSection>
 
-      <section onMouseEnter={showMaterialBox} onMouseLeave={hiddenMaterialBox}>
+      <SecondSection onMouseEnter={showMaterialBox} onMouseLeave={hiddenMaterialBox}>
         <DropdownBtn type="button">
           <p>재료 {checkedMaterials.length > 0 && <span>({checkedMaterials.length})</span>}</p>
           <img alt="이미지" src="Image/arrowDropDown.png" />
@@ -118,7 +118,7 @@ const Filter: FC = () => {
             })}
           </UlBox>
         )}
-      </section>
+      </SecondSection>
 
       {(checkedMethods.length > 0 || checkedMaterials.length > 0) && (
         <section>
@@ -134,6 +134,15 @@ const Filter: FC = () => {
 
 const FilteringLayout = styled.div`
   display: flex;
+`;
+
+const FirstSection = styled.section`
+  width: 131.766px;
+  margin-right: 10px;
+`;
+
+const SecondSection = styled.section`
+  width: 158px;
 `;
 
 const DropdownBtn = styled.button`
@@ -158,6 +167,7 @@ const UlBox = styled.ul`
   background: #ffffff;
   border: 1px solid #939fa5;
   border-radius: 4px;
+  margin: 4px 0;
   padding-left: 12px;
   padding-right: 64px;
   padding-top: 17px;
@@ -179,6 +189,7 @@ const UlBox = styled.ul`
 `;
 
 const RefreshBtn = styled.button`
+  position: relative;
   background: #ffffff;
   padding: 0;
   display: flex;

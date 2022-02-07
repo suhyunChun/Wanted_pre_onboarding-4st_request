@@ -46,7 +46,6 @@ const Container: FC = () => {
         들어온 요청
         <br />
         <span>파트너에게 딱 맞는 요청서를 찾아보세요</span>
-        <FilterLayout />
       </TextHeader>
       <FilterLayout />
     </Layout>

@@ -15,6 +15,8 @@ const FilterLayout = () => {
 const FilterSection = styled.section`
   width: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 `;
 
 export default FilterLayout;

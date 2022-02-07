@@ -1,6 +1,7 @@
 import React, { useState, useEffect, FC } from 'react';
 import type { infoType } from '../../types/components/infolist';
 import * as infoListAPI from '../../api/getInforList';
+import FilterLayout from '../../components/SetFilter/FilterLayout';
 import Container from '../../components/Container';
 
 const MainPage: FC = () => {
@@ -20,7 +21,12 @@ const MainPage: FC = () => {
     console.log(infoList);
   }, [infoList]);
 
-  return <Container />;
+  return (
+    <div>
+      <FilterLayout />
+      <Container />
+    </div>
+  );
 };
 
 export default MainPage;

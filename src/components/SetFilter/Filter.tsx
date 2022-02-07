@@ -1,5 +1,7 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { addMethod } from '../../modules/filter/actions';
 
 const methods = [
   { id: 0, name: '밀링', select: false },
@@ -25,10 +27,14 @@ const Filter: FC = () => {
   const [checkedMaterials, SetCheckedMaterials] = useState<string[]>([]);
   const [dropboxIsActive, SetDropboxIsActive] = useState<Dropbox>({ methodsUl: false, materialsUl: false });
 
+  const dispatch = useDispatch();
+  const updateCheckMethod = useCallback((method: string) => dispatch(addMethod({ method })), [dispatch]);
+
   const handleChangeMethod = (e: ChangeEvent<HTMLInputElement>): void => {
     const { checked, name } = e.target;
     if (checked) {
       SetCheckedMethods([...checkedMethods, name]);
+      updateCheckMethod(name);
     } else {
       SetCheckedMethods(checkedMethods.filter((method) => method !== name));
     }

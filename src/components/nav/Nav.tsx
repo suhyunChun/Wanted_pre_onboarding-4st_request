@@ -10,6 +10,9 @@ const NavContainer = styled.div`
   border-radius: 0px;
   background: #1565c0;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
+  @media (max-width: 600px) {
+    justify-content: flex-start;
+  }
 `;
 
 const NavTitle = styled.div`
@@ -24,6 +27,9 @@ const SideContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-right: 40px;
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 const CompanyIcon = styled.div`
   height: 15px;
@@ -32,7 +38,6 @@ const CompanyIcon = styled.div`
   background: url('../Image/Vector.png');
   margin-right: 12px;
 `;
-
 const Company = styled.div`
   height: 20px;
   width: 110px;
@@ -56,10 +61,21 @@ const Logout = styled.div`
   font-size: 14px;
   color: #ffffff;
 `;
+const MenuIcon = styled.div`
+  width: 30px;
+  height: 50px;
+  top: 10px;
+  margin-left: 20px;
+  background: url('../Image/menu_24px.png');
+  @media (min-width: 600px) {
+    display: none;
+  }
+`;
 
 const Nav: FC = (): JSX.Element => {
   return (
     <NavContainer>
+      <MenuIcon />
       <NavTitle />
       <SideContainer>
         <CompanyIcon />

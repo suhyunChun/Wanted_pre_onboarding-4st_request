@@ -89,6 +89,7 @@ const BlinkBox = styled.div`
 `;
 
 const Nav = ({ isSidebar, handle }: Props) => {
+  console.log('prTest');
   return (
     <NavContainer style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
       <BlinkBox

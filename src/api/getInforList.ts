@@ -1,8 +1,8 @@
-import axios from 'axios';
+import client from './client';
 
 export const getInfoList = async () => {
-  console.log('test');
-  const response = await axios.get('http://localhost:4000/requests');
-  console.log(response.data);
-  return response.data;
+  const response = await client.get('http://localhost:4000/requests');
+  const { data } = response;
+  
+  return data;
 };

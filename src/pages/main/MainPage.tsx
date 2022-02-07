@@ -1,25 +1,13 @@
-import React, { useState, useEffect, FC } from 'react';
-import type { infoType } from '../../types/components/infolist';
-import * as infoListAPI from '../../api/getInforList';
+import React, { FC } from 'react';
+import InfoListTemplate from './InfoListTemplate';
+import InfoListForm from './InfoListForm';
 
 const MainPage: FC = () => {
-  const [infoList, setInfoList] = useState<infoType[] | null>(null);
-
-  useEffect(() => {
-    async function getInfoList() {
-      const result = await infoListAPI.getInfoList();
-      const { requests } = result;
-      console.log(requests);
-      setInfoList(requests);
-    }
-    getInfoList();
-  }, []);
-
-  useEffect(() => {
-    console.log(infoList);
-  }, [infoList]);
-
-  return <div />;
+  return (
+    <InfoListTemplate>
+      <InfoListForm method={[]} material={[]} status={false} />
+    </InfoListTemplate>
+  );
 };
 
 export default MainPage;

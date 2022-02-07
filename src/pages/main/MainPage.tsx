@@ -23,7 +23,6 @@ const MainPage: FC = () => {
 
   return (
     <div>
-      <FilterLayout />
       <Container />
     </div>
   );

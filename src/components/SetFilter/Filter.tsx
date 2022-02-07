@@ -69,7 +69,7 @@ const Filter: FC = () => {
       <section onMouseEnter={showMethodBox} onMouseLeave={hiddenMethodBox}>
         <DropdownBtn type="button">
           <p>가공방식{checkedMethods.length > 0 && <span>({checkedMethods.length})</span>}</p>
-          <img alt="이미지" src="img/arrowDropDown.png" />
+          <img alt="이미지" src="Image/arrowDropDown.png" />
         </DropdownBtn>
         {dropboxIsActive.methodsUl && (
           <UlBox>
@@ -93,7 +93,7 @@ const Filter: FC = () => {
       <section onMouseEnter={showMaterialBox} onMouseLeave={hiddenMaterialBox}>
         <DropdownBtn type="button">
           <p>재료 {checkedMaterials.length > 0 && <span>({checkedMaterials.length})</span>}</p>
-          <img alt="이미지" src="img/arrowDropDown.png" />
+          <img alt="이미지" src="Image/arrowDropDown.png" />
         </DropdownBtn>
         {dropboxIsActive.materialsUl && (
           <UlBox>
@@ -117,7 +117,7 @@ const Filter: FC = () => {
       {(checkedMethods.length > 0 || checkedMaterials.length > 0) && (
         <section>
           <RefreshBtn type="button" onClick={clickOnResetChecked}>
-            <img alt="되돌리기" src="img/refresh_24px.png" />
+            <img alt="되돌리기" src="Image/refresh_24px.png" />
             <p>필터링 리셋</p>
           </RefreshBtn>
         </section>

@@ -17,8 +17,64 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
   //       material: ['알루미늄'],
   //       status: '대기중',
   //     },
+  //     {
+  //       id: 1,
+  //       title: '자동차 시품 제작',
+  //       client: 'A 고객사',
+  //       due: '2020.12.14',
+  //       count: 2,
+  //       amount: 100,
+  //       method: ['밀링', '선반'],
+  //       material: ['알루미늄'],
+  //       status: '대기중',
+  //     },
+  //     {
+  //       id: 1,
+  //       title: '자동차 시품 제작',
+  //       client: 'A 고객사',
+  //       due: '2020.12.14',
+  //       count: 2,
+  //       amount: 100,
+  //       method: ['밀링', '선반'],
+  //       material: ['알루미늄'],
+  //       status: '대기중',
+  //     },
+  //     {
+  //       id: 1,
+  //       title: '자동차 시품 제작',
+  //       client: 'A 고객사',
+  //       due: '2020.12.14',
+  //       count: 2,
+  //       amount: 100,
+  //       method: ['밀링', '선반'],
+  //       material: ['알루미늄'],
+  //       status: '대기중',
+  //     },
+  //     {
+  //       id: 1,
+  //       title: '자동차 시품 제작',
+  //       client: 'A 고객사',
+  //       due: '2020.12.14',
+  //       count: 2,
+  //       amount: 100,
+  //       method: ['밀링', '선반'],
+  //       material: ['알루미늄'],
+  //       status: '대기중',
+  //     },
+  //     {
+  //       id: 1,
+  //       title: '자동차 시품 제작',
+  //       client: 'A 고객사',
+  //       due: '2020.12.14',
+  //       count: 2,
+  //       amount: 100,
+  //       method: ['밀링', '선반'],
+  //       material: ['알루미늄'],
+  //       status: '대기중',
+  //     },
   //   ]);
   const [sortedInfoList, setSortedInfoList] = useState<InfoType[]>([]);
+  const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -45,10 +101,12 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
 
   useEffect(() => {
     checkSortedInfoList(method, 'method');
+    checkEmptyList();
   }, [method]);
 
   useEffect(() => {
     checkSortedInfoList(material, 'material');
+    checkEmptyList();
   }, [material]);
 
   useEffect(() => {
@@ -57,9 +115,17 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
       const filteredInfoList: InfoType[] = targetInfoList.filter((info: InfoType) => info.status);
       setSortedInfoList(filteredInfoList);
     }
+    checkEmptyList();
   }, [status]);
 
-  return { sortedInfoList };
+  const checkEmptyList = () => {
+    const currentInfoListNum = sortedInfoList.length;
+
+    if (currentInfoListNum === 0) setIsEmpty(true);
+    else setIsEmpty(false);
+  };
+
+  return { sortedInfoList, isEmpty };
 };
 
 export default useInfoListState;

@@ -6,21 +6,11 @@ import type { OptionalProps } from '../../types/props/optionalProps';
 import type { InfoType } from '../../types/components/infolist';
 
 const InfoListForm: FC<OptionalProps> = ({ method, material, status }) => {
-  const { sortedInfoList } = useInfoListState({ method, material, status });
-
-  const checkEmptyList = (): boolean => {
-    let isEmpty = true;
-
-    const currentInfoListNum = sortedInfoList.length;
-
-    if (currentInfoListNum === 0) isEmpty = true;
-
-    return isEmpty;
-  };
+  const { sortedInfoList, isEmpty } = useInfoListState({ method, material, status });
 
   return (
     <Container>
-      {checkEmptyList() ? (
+      {isEmpty ? (
         <GuideLine>
           <FrontInformation>조건에 맞는 견적 요청이 없습니다.</FrontInformation>
         </GuideLine>
@@ -36,6 +26,9 @@ const InfoListForm: FC<OptionalProps> = ({ method, material, status }) => {
 
 const Container = styled.div`
   max-width: 1130px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 `;
 
 const GuideLine = styled.div`

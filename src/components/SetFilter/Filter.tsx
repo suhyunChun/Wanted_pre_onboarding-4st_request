@@ -69,7 +69,7 @@ const Filter: FC = () => {
       <section onMouseEnter={showMethodBox} onMouseLeave={hiddenMethodBox}>
         <DropdownBtn type="button">
           <p>가공방식{checkedMethods.length > 0 && <span>({checkedMethods.length})</span>}</p>
-          <img alt="이미지" src="Image/arrowDropDown.png" />
+          <img alt="이미지" src="Image/icon_arrowdropdown.png" />
         </DropdownBtn>
         {dropboxIsActive.methodsUl && (
           <UlBox>
@@ -93,7 +93,7 @@ const Filter: FC = () => {
       <section onMouseEnter={showMaterialBox} onMouseLeave={hiddenMaterialBox}>
         <DropdownBtn type="button">
           <p>재료 {checkedMaterials.length > 0 && <span>({checkedMaterials.length})</span>}</p>
-          <img alt="이미지" src="Image/arrowDropDown.png" />
+          <img alt="이미지" src="Image/icon_arrowdropdown.png" />
         </DropdownBtn>
         {dropboxIsActive.materialsUl && (
           <UlBox>

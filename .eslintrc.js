@@ -27,5 +27,8 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
+    'dot-notation': ['warn', { allowKeywords: true }],
+    'react/jsx-props-no-spreading': 'off',
   },
 };

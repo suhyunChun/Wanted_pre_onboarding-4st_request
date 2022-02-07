@@ -1,4 +1,5 @@
-export interface infoType {
+export interface InfoType {
+  [key: string]: any;
   id: number;
   title: string;
   client: string;

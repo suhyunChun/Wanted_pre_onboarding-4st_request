@@ -1,18 +1,17 @@
-import React, { FC } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import InfoListForm from '../pages/main/InfoListForm';
+import InfoListTemplate from '../pages/main/InfoListTemplate';
 import FilterLayout from './SetFilter/FilterLayout';
 
 const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px;
   width: 80%;
-  height: 600px;
-  margin-left: 150px;
+  margin: auto;
   left: 155px;
   top: 110px;
-  overflow: hidden;
   @media (max-width: 600px) {
     left: 25px;
     width: 90%;
@@ -25,6 +24,7 @@ const TextHeader = styled.div`
     font-size: 16px;
     font-weight: 500;
   }
+
   font-weight: 800;
   font-family: Noto Sans KR Regular;
   color: #323d45;
@@ -41,24 +41,32 @@ const TextHeader = styled.div`
 const LayoutBox = styled.div`
   width: 100vw;
   height: 100vh;
-  transition: all 2s;
+  transition: all 1s;
 `;
 interface Props {
   isSidebar: boolean;
+  handle(a): void;
 }
-const Container = ({ isSidebar }: Props) => {
+const Container = ({ isSidebar, handle }: Props) => {
   return (
-    <LayoutBox style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
-      <Layout>
+    <LayoutBox
+      onClick={() => {
+        handle(false);
+      }}
+      style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}
+    >
+      <Layout style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
         <TextHeader>
           들어온 요청
           <br />
           <span>파트너에게 딱 맞는 요청서를 찾아보세요.</span>
         </TextHeader>
         <FilterLayout />
+        <InfoListTemplate>
+          <InfoListForm method={[]} material={[]} status={false} />
+        </InfoListTemplate>
       </Layout>
     </LayoutBox>
-
   );
 };
 export default Container;

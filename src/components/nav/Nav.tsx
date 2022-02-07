@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 interface Props {
@@ -15,7 +15,7 @@ const NavContainer = styled.div<{ isSidebar?: boolean }>`
   border-radius: 0px;
   background: #1565c0;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
-  transition: all 2s;
+  transition: all 1s;
   @media (max-width: 600px) {
     justify-content: flex-start;
   }

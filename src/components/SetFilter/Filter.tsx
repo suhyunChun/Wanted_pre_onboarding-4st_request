@@ -26,10 +26,8 @@ const Filter: FC = () => {
   const [checkedMethods, SetCheckedMethods] = useState<string[]>([]);
   const [checkedMaterials, SetCheckedMaterials] = useState<string[]>([]);
   const [dropboxIsActive, SetDropboxIsActive] = useState<Dropbox>({ methodsUl: false, materialsUl: false });
-
   const dispatch = useDispatch();
   const updateCheckMethod = useCallback((method: string) => dispatch(addMethod({ method })), [dispatch]);
-
   const handleChangeMethod = (e: ChangeEvent<HTMLInputElement>): void => {
     const { checked, name } = e.target;
     if (checked) {
@@ -137,12 +135,12 @@ const FilteringLayout = styled.div`
 `;
 
 const FirstSection = styled.section`
-  width: 131.766px;
+  width: 135px;
   margin-right: 10px;
 `;
 
 const SecondSection = styled.section`
-  width: 158px;
+  width: 162px;
 `;
 
 const DropdownBtn = styled.button`
@@ -164,6 +162,7 @@ const DropdownBtn = styled.button`
 `;
 
 const UlBox = styled.ul`
+  position: absolute;
   background: #ffffff;
   border: 1px solid #939fa5;
   border-radius: 4px;

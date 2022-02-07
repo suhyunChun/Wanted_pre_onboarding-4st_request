@@ -1,12 +1,20 @@
-import React, { FC } from 'react';
-import InfoListTemplate from './InfoListTemplate';
-import InfoListForm from './InfoListForm';
+import React, { FC, useState } from 'react';
+
+import Nav from '../../components/nav/Nav';
+import SideNav from '../../components/nav/SideNav';
+import Container from '../../components/Container';
 
 const MainPage: FC = () => {
+  const [isSidebar, setIsSidebar] = useState<boolean>(false);
+  const handle = (a: boolean): void => {
+    setIsSidebar(a);
+  };
   return (
-    <InfoListTemplate>
-      <InfoListForm method={[]} material={[]} status={false} />
-    </InfoListTemplate>
+    <>
+      <Nav isSidebar={isSidebar} handle={handle} />
+      <SideNav isSidebar={isSidebar} handle={handle} />
+      <Container isSidebar={isSidebar} handle={handle} />
+    </>
   );
 };
 

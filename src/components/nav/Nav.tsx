@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 const Nav: FC = () => {
-  return <div></div>;
+  return <div />;
 };
 
 export default Nav;

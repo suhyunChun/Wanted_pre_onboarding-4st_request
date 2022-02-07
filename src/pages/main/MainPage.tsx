@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import type { infoType } from '../../types/components/infolist';
 import * as infoListAPI from '../../api/getInforList';
 
-const MainPage: React.FC = () => {
+const MainPage: FC = () => {
   const [infoList, setInfoList] = useState<infoType[] | null>(null);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const MainPage: React.FC = () => {
     console.log(infoList);
   }, [infoList]);
 
-  return <div></div>;
+  return <div />;
 };
 
 export default MainPage;

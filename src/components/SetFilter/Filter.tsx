@@ -32,7 +32,6 @@ const Filter: FC = () => {
   const clearCheckMethod = useCallback(() => dispatch(clearMehotd()), [dispatch]);
   const updateCheckMaterial = useCallback((material: string) => dispatch(addMaterial({ material })), [dispatch]);
 
-
   const handleChangeMethod = (e: ChangeEvent<HTMLInputElement>): void => {
     const { checked, name } = e.target;
     if (checked) {
@@ -144,7 +143,7 @@ const FilteringLayout = styled.div`
 
 const FirstSection = styled.section`
   width: 135px;
-  margin-right: 10px;
+  margin-right: 0px;
 `;
 
 const SecondSection = styled.section`

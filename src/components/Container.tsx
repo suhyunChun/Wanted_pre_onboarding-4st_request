@@ -8,7 +8,7 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 80%;
+  width: 1130px;
   margin: auto;
   left: 155px;
   top: 110px;
@@ -45,7 +45,7 @@ const LayoutBox = styled.div`
 `;
 interface Props {
   isSidebar: boolean;
-  handle(a): void;
+  handle(a: boolean): void;
 }
 const Container = ({ isSidebar, handle }: Props) => {
   return (

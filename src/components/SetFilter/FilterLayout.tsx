@@ -17,6 +17,9 @@ const FilterSection = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 export default FilterLayout;

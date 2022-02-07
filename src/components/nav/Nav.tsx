@@ -1,8 +1,12 @@
-import React, { FC } from 'react';
-import { JsxAttributeLike } from 'typescript';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 
-const NavContainer = styled.div`
+interface Props {
+  isSidebar: boolean;
+  handle(a: boolean): void;
+}
+
+const NavContainer = styled.div<{ isSidebar?: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,23 +15,25 @@ const NavContainer = styled.div`
   border-radius: 0px;
   background: #1565c0;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
+  transition: all 2s;
   @media (max-width: 600px) {
     justify-content: flex-start;
   }
 `;
-
 const NavTitle = styled.div`
   height: 20px;
   width: 153px;
   border-radius: 0px;
-  background: url('../Image/자산 1@3x 3.png');
+  background: url('../Image/icon_navtitle.png');
   margin-left: 40px;
+  cursor: pointer;
 `;
 const SideContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
   margin-right: 40px;
+  cursor: pointer;
   @media (max-width: 600px) {
     display: none;
   }
@@ -36,7 +42,7 @@ const CompanyIcon = styled.div`
   height: 15px;
   width: 23px;
   border-radius: 0px;
-  background: url('../Image/Vector.png');
+  background: url('../Image/icon_companyW.png');
   margin-right: 12px;
 `;
 const Company = styled.div`
@@ -67,16 +73,34 @@ const MenuIcon = styled.div`
   height: 50px;
   top: 10px;
   margin-left: 20px;
-  background: url('../Image/menu_24px.png');
+  transition: all 2s;
+  background: url('../Image/icon_menu.png');
+  cursor: pointer;
   @media (min-width: 600px) {
     display: none;
   }
 `;
+const BlinkBox = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20vw;
+  height: 100%;
+`;
 
-const Nav: FC = (): JSX.Element => {
+const Nav = ({ isSidebar, handle }: Props) => {
   return (
-    <NavContainer>
-      <MenuIcon />
+    <NavContainer style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
+      <BlinkBox
+        onClick={() => {
+          handle(false);
+        }}
+      />
+      <MenuIcon
+        onClick={() => {
+          handle(true);
+        }}
+      />
       <NavTitle />
       <SideContainer>
         <CompanyIcon />

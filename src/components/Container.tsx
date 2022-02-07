@@ -10,7 +10,6 @@ const Layout = styled.div`
   width: 80%;
   height: 600px;
   margin-left: 150px;
-  margin-top: 40px;
   left: 155px;
   top: 110px;
   overflow: hidden;
@@ -18,7 +17,6 @@ const Layout = styled.div`
     left: 25px;
     width: 90%;
     margin-left: 24px;
-    margin-top: 40px;
   }
 `;
 
@@ -32,6 +30,7 @@ const TextHeader = styled.div`
   color: #323d45;
   font-size: 20px;
   margin-bottom: 32px;
+  margin-top: 40px;
   @media (max-width: 600px) {
     span {
       font-size: 24.1px;
@@ -39,16 +38,27 @@ const TextHeader = styled.div`
     font-size: 30px;
   }
 `;
-const Container: FC = () => {
+const LayoutBox = styled.div`
+  width: 100vw;
+  height: 100vh;
+  transition: all 2s;
+`;
+interface Props {
+  isSidebar: boolean;
+}
+const Container = ({ isSidebar }: Props) => {
   return (
-    <Layout>
-      <TextHeader>
-        들어온 요청
-        <br />
-        <span>파트너에게 딱 맞는 요청서를 찾아보세요</span>
-      </TextHeader>
-      <FilterLayout />
-    </Layout>
+    <LayoutBox style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
+      <Layout>
+        <TextHeader>
+          들어온 요청
+          <br />
+          <span>파트너에게 딱 맞는 요청서를 찾아보세요.</span>
+        </TextHeader>
+        <FilterLayout />
+      </Layout>
+    </LayoutBox>
+
   );
 };
 export default Container;

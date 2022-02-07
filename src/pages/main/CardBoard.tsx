@@ -4,19 +4,33 @@ import Button from '../../components/common/Button';
 import { InfoType } from '../../types/components/infolist';
 
 const CardBoard: FC<InfoType> = (info: InfoType) => {
+  const { title, client, due, count, amount, method, material, status } = info;
+
+  const checkCurrentElemNum = (currentList: string[]): string => {
+    const currentListNum = currentList.length;
+    let joinedCurrentList: string;
+
+    if (currentListNum < 1) joinedCurrentList = currentList.join('');
+    else joinedCurrentList = currentList.join(', ');
+
+    return joinedCurrentList;
+  };
+
   return (
     <Container>
       <FrontInformationContainer>
         <TopInformationContainer>
           <TitleInfoContainer>
-            <TitleInfo>자동차 시제품 제작</TitleInfo>
-            <StatusInfo>
-              <div className="status">상담 중</div>
-            </StatusInfo>
+            <TitleInfo>{title}</TitleInfo>
+            {status === '상담중' && (
+              <StatusInfo>
+                <div className="status">상담중</div>
+              </StatusInfo>
+            )}
           </TitleInfoContainer>
-          <ClientInfo>A 고객사</ClientInfo>
+          <ClientInfo>{client}</ClientInfo>
         </TopInformationContainer>
-        <DueInfo>2020.12.14까지 납기</DueInfo>
+        <DueInfo>{due}</DueInfo>
       </FrontInformationContainer>
       <BorderLine />
       <BottomInformationContainer>
@@ -27,10 +41,10 @@ const CardBoard: FC<InfoType> = (info: InfoType) => {
           <SubInfoName>재료</SubInfoName>
         </SubInfoNameContainer>
         <SubInfoContainer>
-          <SubInfo>2개</SubInfo>
-          <SubInfo>100개</SubInfo>
-          <SubInfo>밀림, 선반</SubInfo>
-          <SubInfo>알루미늄</SubInfo>
+          <SubInfo>{count}</SubInfo>
+          <SubInfo>{amount}</SubInfo>
+          <SubInfo>{checkCurrentElemNum(method)}</SubInfo>
+          <SubInfo>{checkCurrentElemNum(material)}</SubInfo>
         </SubInfoContainer>
       </BottomInformationContainer>
       <ButtonContainer>

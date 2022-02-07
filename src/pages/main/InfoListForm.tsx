@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import CardBoard from './CardBoard';
 import useInfoListState from '../../hooks/useInfoListState';
 import type { OptionalProps } from '../../types/props/optionalProps';
 import type { InfoType } from '../../types/components/infolist';
+import type { ContainerType } from '../../types/styles/infoListForm/ContainerType';
 
 const InfoListForm: FC<OptionalProps> = ({ method, material, status }) => {
   const { sortedInfoList, isEmpty } = useInfoListState({ method, material, status });
 
   return (
-    <Container>
+    <Container isEmpty={isEmpty}>
       {isEmpty ? (
         <GuideLine>
           <FrontInformation>조건에 맞는 견적 요청이 없습니다.</FrontInformation>
@@ -24,11 +25,16 @@ const InfoListForm: FC<OptionalProps> = ({ method, material, status }) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<ContainerType>`
   max-width: 1130px;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+
+  ${({ isEmpty }) =>
+    !isEmpty &&
+    css`
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    `}
 `;
 
 const GuideLine = styled.div`

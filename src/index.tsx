@@ -10,7 +10,6 @@ import { theme } from './styles/theme';
 import rootReducer from './modules';
 
 const store = createStore(rootReducer, composeWithDevTools());
-console.log(store.getState());
 
 ReactDOM.render(
   <Provider store={store}>

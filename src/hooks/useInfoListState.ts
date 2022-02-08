@@ -6,75 +6,7 @@ import * as infoListAPI from '../api/getInforList';
 const useInfoListState = ({ method, material, status }: OptionalProps) => {
   const [infoList, setInfoList] = useState<InfoType[]>([]);
   const [sortedInfoList, setSortedInfoList] = useState<InfoType[]>([]);
-  /*
-   {
-      id: 1,
-      title: '자동차 시품 제작',
-      client: 'A 고객사',
-      due: '2020.12.14',
-      count: 2,
-      amount: 100,
-      method: ['밀링', '선반'],
-      material: ['알루미늄'],
-      status: '대기중',
-    },
-    {
-      id: 2,
-      title: '비행기 시제품 제작',
-      client: 'B 고객사',
-      due: '2020.12.13',
-      count: 2,
-      amount: 100,
-      method: ['선반'],
-      material: ['탄소강', '강철'],
-      status: '상담중',
-    },
-    {
-      id: 3,
-      title: '기차 시제품 제작',
-      client: 'C 고객사',
-      due: '2020.12.12',
-      count: 1,
-      amount: 20,
-      method: ['선반'],
-      material: ['구리'],
-      status: '대기중',
-    },
-    {
-      id: 4,
-      title: '자전거 시제품 제작',
-      client: 'D 고객사',
-      due: '2020.12.11',
-      count: 1,
-      amount: 45,
-      method: ['선반'],
-      material: ['스테인리스강'],
-      status: '대기중',
-    },
-    {
-      id: 5,
-      title: '헬리콥터 시제품 제작',
-      client: 'E 업체',
-      due: '2020.12.10',
-      count: 2,
-      amount: 2,
-      method: ['밀링'],
-      material: ['알루미늄', '탄소강'],
-      status: '대기중',
-    },
-    {
-      id: 5,
-      title: '헬리콥터 시제품 제작',
-      client: 'E 업체',
-      due: '2020.12.10',
-      count: 2,
-      amount: 2,
-      method: ['밀링'],
-      material: ['알루미늄', '탄소강'],
-      status: '대기중',
-    },
-  */
-  //   const [sortedInfoList, setSortedInfoList] = useState<InfoType[]>([]);
+
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 
   useEffect(() => {
@@ -85,29 +17,45 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
     getData();
   }, []);
 
-  const checkSortedInfoList = (currentSort: string[], currentSortName: string): void => {
+  const checkSortedInfoList = (currentSort: string[], prevSort: string[], currentSortName: string): void => {
     const currentSelectedSortNum: number = currentSort.length;
+
     if (currentSelectedSortNum !== 0) {
-      const targetInfoList: InfoType[] = sortedInfoList.length === 0 ? infoList : sortedInfoList;
-      const filteredInfoList = targetInfoList.filter((info: InfoType) => {
+      let filteredInfoList = sortedInfoList.slice();
+
+      infoList.forEach((info: InfoType) => {
         let isSorted = false;
         for (let i = 0; i < currentSelectedSortNum; i++) {
           if (info[currentSortName].includes(currentSort[i])) isSorted = true;
+          else {
+            isSorted = false;
+            break;
+          }
         }
-        return isSorted;
+
+        const currentStoredInfoID = filteredInfoList.map((info) => {
+          return info.id;
+        });
+
+        if (isSorted && !currentStoredInfoID.includes(info.id)) {
+          filteredInfoList.push(info);
+        }
+
+        if (!isSorted && currentStoredInfoID.includes(info.id)) {
+          filteredInfoList = filteredInfoList.filter((storedInfo) => storedInfo.id !== info.id);
+        }
       });
+
       setSortedInfoList(filteredInfoList);
-    }
+    } else if (prevSort.length === 0) setSortedInfoList([]);
   };
 
   useEffect(() => {
-    checkSortedInfoList(method, 'method');
-    checkEmptyList();
+    checkSortedInfoList(method, material, 'method');
   }, [method]);
 
   useEffect(() => {
-    checkSortedInfoList(material, 'material');
-    checkEmptyList();
+    checkSortedInfoList(material, method, 'material');
   }, [material]);
 
   useEffect(() => {
@@ -116,15 +64,14 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
       const filteredInfoList: InfoType[] = targetInfoList.filter((info: InfoType) => info.status);
       setSortedInfoList(filteredInfoList);
     }
-    checkEmptyList();
   }, [status]);
 
-  const checkEmptyList = () => {
+  useEffect(() => {
     const currentInfoListNum = sortedInfoList.length;
 
     if (currentInfoListNum === 0) setIsEmpty(true);
     else setIsEmpty(false);
-  };
+  }, [sortedInfoList]);
 
   return { sortedInfoList, isEmpty };
 };

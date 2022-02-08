@@ -45,6 +45,7 @@ const ToggleBox = styled.div`
     width: 37px;
     height: 20px;
     padding: 0;
+    cursor: pointer;
   }
   & > p {
     font-family: Noto Sans KR Medium;

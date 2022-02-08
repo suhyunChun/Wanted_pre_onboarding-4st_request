@@ -34,6 +34,9 @@ const Container = styled.div<ContainerType>`
       display: flex;
       justify-content: flex-start;
       flex-wrap: wrap;
+      @media (max-width: 600px) {
+        justify-content: center;
+      } ;
     `}
 `;
 

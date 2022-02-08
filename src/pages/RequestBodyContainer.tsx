@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useSelector } from 'react-redux';
 import InfoListForm from './main/InfoListForm';
 import InfoListTemplate from './main/InfoListTemplate';
@@ -18,10 +18,11 @@ const Container = ({ isSidebar, handle }: Props) => {
 
   return (
     <LayoutBox
+      isSidebar={isSidebar}
       onClick={() => {
         handle(false);
       }}
-      style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.5' : '1' }}
+      style={{}}
     >
       <Layout>
         <TextHeader>
@@ -72,9 +73,21 @@ const TextHeader = styled.div`
     font-size: 28px;
   }
 `;
-const LayoutBox = styled.div`
+const LayoutBox = styled.div<{ isSidebar?: boolean }>`
   height: calc(100vh - 70px);
   transition: all 1s;
+  ${(props) =>
+    props.isSidebar
+      ? css`
+          background: #000000;
+          opacity: 0.5;
+          overflow: hidden;
+        `
+      : css`
+          background: '';
+          opacity: 1;
+          overflow: visible;
+        `}
 `;
 
 export default Container;

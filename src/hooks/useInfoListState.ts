@@ -27,7 +27,10 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
         let isSorted = false;
         for (let i = 0; i < currentSelectedSortNum; i++) {
           if (info[currentSortName].includes(currentSort[i])) isSorted = true;
-          else isSorted = false;
+          else {
+            isSorted = false;
+            break;
+          }
         }
 
         const currentStoredInfoID = filteredInfoList.map((info) => {

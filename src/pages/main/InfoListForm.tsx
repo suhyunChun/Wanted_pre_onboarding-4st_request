@@ -17,8 +17,8 @@ const InfoListForm: FC<OptionalProps> = ({ method, material, status }) => {
         </GuideLine>
       ) : (
         sortedInfoList.length !== 0 &&
-        sortedInfoList.map((info: InfoType) => {
-          return <CardBoard key={info.id} {...info} />;
+        sortedInfoList.map((info: InfoType, index) => {
+          return <CardBoard key={info.id} {...info} index={index} />;
         })
       )}
     </Container>
@@ -32,8 +32,7 @@ const Container = styled.div<ContainerType>`
     !isEmpty &&
     css`
       display: flex;
-      justify-content: space-evenly;
-      justi
+      justify-content: flex-start;
       flex-wrap: wrap;
     `}
 `;

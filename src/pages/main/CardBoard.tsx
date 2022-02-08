@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Button from '../../components/common/Button';
-import { InfoType } from '../../types/components/infolist';
+import type { InfoType } from '../../types/components/infolist';
+import type { ContainerType } from '../../types/styles/cardboard/ContainerType';
 
 const CardBoard: FC<InfoType> = (info: InfoType) => {
-  const { title, client, due, count, amount, method, material, status } = info;
+  const { title, client, due, count, amount, method, material, status, index } = info;
 
   const checkCurrentElemNum = (currentList: string[]): string => {
     const currentListNum = currentList.length;
@@ -17,7 +18,7 @@ const CardBoard: FC<InfoType> = (info: InfoType) => {
   };
 
   return (
-    <Container>
+    <Container index={index}>
       <FrontInformationContainer>
         <TopInformationContainer>
           <TitleInfoContainer>
@@ -55,17 +56,24 @@ const CardBoard: FC<InfoType> = (info: InfoType) => {
   );
 };
 
-const Container = styled.article`
+const Container = styled.article<ContainerType>`
   max-width: 366px;
   max-height: 356px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-right: 16px;
   margin-bottom: 16px;
   padding: 24px 16px;
   background-color: #ffffff;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
+
+  ${({ index }) =>
+    (index + 1) % 3 === 0 &&
+    css`
+      margin-right: 0;
+    `}
 `;
 
 const FrontInformationContainer = styled.div`

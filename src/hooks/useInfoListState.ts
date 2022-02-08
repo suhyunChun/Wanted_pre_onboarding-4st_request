@@ -5,8 +5,9 @@ import * as infoListAPI from '../api/getInforList';
 
 const useInfoListState = ({ method, material, status }: OptionalProps) => {
   const [infoList, setInfoList] = useState<InfoType[]>([]);
-  const [sortedInfoList, setSortedInfoList] = useState<InfoType[]>([
-    {
+  const [sortedInfoList, setSortedInfoList] = useState<InfoType[]>([]);
+  /*
+   {
       id: 1,
       title: '자동차 시품 제작',
       client: 'A 고객사',
@@ -72,7 +73,7 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
       material: ['알루미늄', '탄소강'],
       status: '대기중',
     },
-  ]);
+  */
   //   const [sortedInfoList, setSortedInfoList] = useState<InfoType[]>([]);
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
 

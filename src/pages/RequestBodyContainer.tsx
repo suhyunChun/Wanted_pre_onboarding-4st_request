@@ -1,8 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import InfoListForm from './main/InfoListForm';
 import InfoListTemplate from './main/InfoListTemplate';
 import FilterLayout from '../components/SetFilter/FilterLayout';
+import { RootState } from '../modules/index';
+
+interface Props {
+  isSidebar: boolean;
+  handle(a: boolean): void;
+}
+
+const Container = ({ isSidebar, handle }: Props) => {
+  const method = useSelector(({ filter }: RootState) => filter.filter);
+  const material = useSelector(({ material }: RootState) => material.material);
+
+  return (
+    <LayoutBox
+      onClick={() => {
+        handle(false);
+      }}
+      style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}
+    >
+      <Layout style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
+        <TextHeader>
+          들어온 요청
+          <br />
+          <span>파트너에게 딱 맞는 요청서를 찾아보세요.</span>
+        </TextHeader>
+        <FilterLayout />
+        <InfoListTemplate>
+          <InfoListForm method={method} material={material} status={false} />
+        </InfoListTemplate>
+      </Layout>
+    </LayoutBox>
+  );
+};
 
 const Layout = styled.div`
   display: flex;
@@ -43,30 +76,4 @@ const LayoutBox = styled.div`
   height: 100vh;
   transition: all 1s;
 `;
-interface Props {
-  isSidebar: boolean;
-  handle(a: boolean): void;
-}
-const Container = ({ isSidebar, handle }: Props) => {
-  return (
-    <LayoutBox
-      onClick={() => {
-        handle(false);
-      }}
-      style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}
-    >
-      <Layout style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
-        <TextHeader>
-          들어온 요청
-          <br />
-          <span>파트너에게 딱 맞는 요청서를 찾아보세요.</span>
-        </TextHeader>
-        <FilterLayout />
-        <InfoListTemplate>
-          <InfoListForm method={[]} material={[]} status={false} />
-        </InfoListTemplate>
-      </Layout>
-    </LayoutBox>
-  );
-};
 export default Container;

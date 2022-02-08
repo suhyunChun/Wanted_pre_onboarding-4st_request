@@ -183,7 +183,7 @@ const UlBox = styled.ul`
   background: #ffffff;
   border: 1px solid #939fa5;
   border-radius: 4px;
-  margin: 4px 0;
+  margin: 0;
   padding-left: 12px;
   padding-right: 64px;
   padding-top: 17px;

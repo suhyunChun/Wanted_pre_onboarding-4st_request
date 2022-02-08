@@ -17,29 +17,42 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
     getData();
   }, []);
 
-  const checkSortedInfoList = (currentSort: string[], currentSortName: string): void => {
+  const checkSortedInfoList = (currentSort: string[], prevSort: string[], currentSortName: string): void => {
     const currentSelectedSortNum: number = currentSort.length;
+
     if (currentSelectedSortNum !== 0) {
-      console.log(currentSort);
-      // const targetInfoList: InfoType[] = sortedInfoList.length === 0 ? infoList : sortedInfoList;
-      const filteredInfoList = infoList.filter((info: InfoType) => {
+      let filteredInfoList = sortedInfoList.slice();
+
+      infoList.forEach((info: InfoType) => {
         let isSorted = false;
         for (let i = 0; i < currentSelectedSortNum; i++) {
           if (info[currentSortName].includes(currentSort[i])) isSorted = true;
           else isSorted = false;
         }
-        return isSorted;
+
+        const currentStoredInfoID = filteredInfoList.map((info) => {
+          return info.id;
+        });
+
+        if (isSorted && !currentStoredInfoID.includes(info.id)) {
+          filteredInfoList.push(info);
+        }
+
+        if (!isSorted && currentStoredInfoID.includes(info.id)) {
+          filteredInfoList = filteredInfoList.filter((storedInfo) => storedInfo.id !== info.id);
+        }
       });
+
       setSortedInfoList(filteredInfoList);
-    } else setSortedInfoList([]);
+    } else if (prevSort.length === 0) setSortedInfoList([]);
   };
 
   useEffect(() => {
-    checkSortedInfoList(method, 'method');
+    checkSortedInfoList(method, material, 'method');
   }, [method]);
 
   useEffect(() => {
-    checkSortedInfoList(material, 'material');
+    checkSortedInfoList(material, method, 'material');
   }, [material]);
 
   useEffect(() => {

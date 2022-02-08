@@ -8,7 +8,7 @@ import type { ContainerType } from '../../types/styles/infoListForm/ContainerTyp
 
 const InfoListForm: FC<OptionalProps> = ({ method, material, status }) => {
   const { sortedInfoList, isEmpty } = useInfoListState({ method, material, status });
-  console.log(sortedInfoList);
+
   return (
     <Container isEmpty={isEmpty}>
       {isEmpty ? (

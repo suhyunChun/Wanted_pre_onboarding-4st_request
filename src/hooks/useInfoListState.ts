@@ -36,10 +36,6 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
             isSorted = true;
             break;
           }
-          // else {
-          //   isSorted = false;
-          //   break;
-          // }
         }
 
         const currentStoredInfoID = filteredInfoList.map((info) => {

@@ -10,6 +10,8 @@ export const ADD_MATERIAL = 'material/ADD_MATERIAL';
 export const DELETE_MATERIAL = 'material/DELETE_MATERIAL';
 export const CLEAR_MATERIAL = 'material/CLEAR_MATERIAL';
 
+export const HANDLE_TOGGLE_ON = 'toggle/HANDLE_TOGGLE_ON';
+
 export const addMethod = createStandardAction(ADD_METHOD)<{
   method: string;
 }>();
@@ -25,3 +27,5 @@ export const deleteMaterial = createStandardAction(DELETE_MATERIAL)<{
   material: string;
 }>();
 export const clearMaterial = createStandardAction(CLEAR_MATERIAL)();
+
+export const isToggleOn = createStandardAction(HANDLE_TOGGLE_ON)();

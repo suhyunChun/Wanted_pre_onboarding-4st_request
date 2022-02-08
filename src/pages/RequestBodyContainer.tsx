@@ -76,4 +76,5 @@ const LayoutBox = styled.div`
   height: 100vh;
   transition: all 1s;
 `;
+
 export default Container;

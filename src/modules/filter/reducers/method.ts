@@ -1,7 +1,7 @@
 import { createReducer } from 'typesafe-actions';
 import produce from 'immer';
-import { ADD_MATERIAL, ADD_METHOD, CLEAR_METHOD, DELETE_METHOD } from './actions';
-import { Filter, FilterAction, MaterialAction } from './types';
+import { ADD_METHOD, CLEAR_METHOD, DELETE_METHOD } from '../actions';
+import { Filter, FilterAction } from '../types';
 
 const initailState: Filter = {
   filter: [],

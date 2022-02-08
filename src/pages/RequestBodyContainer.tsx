@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import InfoListForm from './main/InfoListForm';
 import InfoListTemplate from './main/InfoListTemplate';
-import FilterLayout from '../components/SetFilter/FilterLayout';
+import FilterLayout from '../components/setFilter/FilterLayout';
 import { RootState } from '../modules/index';
 
 interface Props {
@@ -20,9 +20,9 @@ const Container = ({ isSidebar, handle }: Props) => {
       onClick={() => {
         handle(false);
       }}
-      style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}
+      style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.5' : '1' }}
     >
-      <Layout style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
+      <Layout>
         <TextHeader>
           들어온 요청
           <br />
@@ -72,7 +72,7 @@ const TextHeader = styled.div`
   }
 `;
 const LayoutBox = styled.div`
-  height: 100vh;
+  height: calc(100vh - 70px);
   transition: all 1s;
 `;
 

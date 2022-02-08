@@ -6,15 +6,36 @@ interface Props {
   handle(a: boolean): void;
 }
 
+const SideNav = ({ isSidebar, handle }: Props) => {
+  return (
+    <SideSlider style={{ transform: isSidebar ? 'translateX(0vw)' : 'translateX(-100vw)' }}>
+      <SlideSliderTitle>
+        <SlideImg src="/Image/icon_slidelogo.png" />
+      </SlideSliderTitle>
+      <SlideSliderBox>
+        <Partner>
+          <CompanyIcon src="/Image/icon_companyB.png" />
+          파트너정밀가공
+        </Partner>
+        <Logout>로그아웃</Logout>
+      </SlideSliderBox>
+    </SideSlider>
+  );
+};
+
 const SideSlider = styled.div<{ isSidebar?: boolean }>`
   position: absolute;
+  display: none;
   left: 0;
   top: 0;
   width: 80vw;
-  height: 100%;
+  height: 100vh;
   background-color: white;
   z-index: 10;
   transition: transform 1s;
+  @media (max-width: 600px) {
+    display: block;
+  }
 `;
 const SlideSliderTitle = styled.div`
   height: 70px;
@@ -71,22 +92,5 @@ const SlideSliderBox = styled.div`
   margin-left: 40px;
   margin-top: 40px;
 `;
-
-const SideNav = ({ isSidebar, handle }: Props) => {
-  return (
-    <SideSlider style={{ transform: isSidebar ? 'translateX(0vw)' : 'translateX(-100vw)' }}>
-      <SlideSliderTitle>
-        <SlideImg src="/Image/icon_slidelogo.png" />
-      </SlideSliderTitle>
-      <SlideSliderBox>
-        <Partner>
-          <CompanyIcon src="/Image/icon_companyB.png" />
-          파트너정밀가공
-        </Partner>
-        <Logout>로그아웃</Logout>
-      </SlideSliderBox>
-    </SideSlider>
-  );
-};
 
 export default SideNav;

@@ -33,13 +33,12 @@ const TextHeader = styled.div`
   margin-top: 40px;
   @media (max-width: 600px) {
     span {
-      font-size: 24.1px;
+      font-size: 23px;
     }
-    font-size: 30px;
+    font-size: 28px;
   }
 `;
 const LayoutBox = styled.div`
-  width: 100vw;
   height: 100vh;
   transition: all 1s;
 `;

@@ -97,6 +97,7 @@ const Filter: FC = () => {
             <img alt="이미지" src="Image/icon_arrowdropdown.png" />
           )}
         </DropdownBtn>
+        <BlinkBox />
         {dropboxIsActive.methodsUl && (
           <UlBox>
             {methods.map((method) => {
@@ -125,6 +126,7 @@ const Filter: FC = () => {
             <img alt="이미지" src="Image/icon_arrowdropdown.png" />
           )}
         </DropdownBtn>
+        <BlinkBox />
         {dropboxIsActive.materialsUl && (
           <UlBox>
             {materials.map((material) => {
@@ -155,7 +157,10 @@ const Filter: FC = () => {
     </FilteringLayout>
   );
 };
-
+const BlinkBox = styled.div`
+  width: 100px;
+  height: 5px;
+`;
 const FilteringLayout = styled.div`
   display: flex;
 `;
@@ -173,7 +178,7 @@ const ThirdSection = styled.section`
   margin-left: 40px;
   position: relative;
   bottom: 3px;
-  z-index: -10;
+  z-index: 1;
 `;
 
 const DropdownBtn = styled.button`
@@ -206,9 +211,10 @@ const UlBox = styled.ul`
   border-radius: 4px;
   margin: 0;
   padding-left: 12px;
-  padding-right: 11px;
+  padding-right: 29px;
   padding-top: 17px;
   padding-bottom: 17px;
+  z-index: 2;
   & > li {
     font-family: Noto Sans KR Medium;
     font-style: normal;

@@ -12,14 +12,14 @@ import {
 
 const methods = [
   { id: 0, name: '밀링', select: false },
-  { id: 1, name: '선방', select: false },
+  { id: 1, name: '선반', select: false },
 ];
 
 const materials = [
   { id: 0, name: '알루미늄', select: false },
   { id: 1, name: '탄소강', select: false },
   { id: 2, name: '구리', select: false },
-  { id: 3, name: '합금강', select: false },
+  { id: 3, name: '스테인리스강', select: false },
   { id: 4, name: '강철', select: false },
 ];
 
@@ -139,7 +139,7 @@ const Filter: FC = () => {
       {(checkedMethods.length > 0 || checkedMaterials.length > 0) && (
         <section>
           <RefreshBtn type="button" onClick={clickOnResetChecked}>
-            <img alt="되돌리기" src="Image/refresh_24px.png" />
+            <img alt="되돌리기" src="Image/icon_refresh.png" />
             <p>필터링 리셋</p>
           </RefreshBtn>
         </section>

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import InfoListForm from '../pages/main/InfoListForm';
-import InfoListTemplate from '../pages/main/InfoListTemplate';
-import FilterLayout from './setFilter/FilterLayout';
+import FilterLayout from '../components/SetFilter/FilterLayout';
+import InfoListForm from './main/InfoListForm';
+import InfoListTemplate from './main/InfoListTemplate';
 
 const Layout = styled.div`
   display: flex;

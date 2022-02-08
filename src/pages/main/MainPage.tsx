@@ -1,21 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+import RequestBodyContainer from '../RequestBodyContainer';
 
-import Nav from '../../components/nav/Nav';
-import SideNav from '../../components/nav/SideNav';
-import Container from '../../components/Container';
-
-const MainPage: FC = () => {
-  const [isSidebar, setIsSidebar] = useState<boolean>(false);
-  const handle = (a: boolean): void => {
-    setIsSidebar(a);
-  };
-  return (
-    <>
-      <Nav isSidebar={isSidebar} handle={handle} />
-      <SideNav isSidebar={isSidebar} handle={handle} />
-      <Container isSidebar={isSidebar} handle={handle} />
-    </>
-  );
+interface Props {
+  isSidebar: boolean;
+  handle(a: boolean): void;
+}
+const MainPage = ({ isSidebar, handle }: Props) => {
+  return <RequestBodyContainer isSidebar={isSidebar} handle={handle} />;
 };
 
 export default MainPage;

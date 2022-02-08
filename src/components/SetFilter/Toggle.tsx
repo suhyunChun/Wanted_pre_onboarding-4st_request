@@ -35,7 +35,7 @@ const ToggleBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 190px;
+  width: 175px;
   @media (max-width: 600px) {
     margin-top: 20px;
   }

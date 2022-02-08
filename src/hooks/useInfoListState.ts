@@ -80,11 +80,11 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
   };
 
   useEffect(() => {
-    checkSortedInfoList(method, material, 'method', 'material');
+    checkSortedInfoList(method, material, 'method');
   }, [method]);
 
   useEffect(() => {
-    checkSortedInfoList(material, method, 'material', 'method');
+    checkSortedInfoList(material, method, 'material');
   }, [material]);
 
   useEffect(() => {

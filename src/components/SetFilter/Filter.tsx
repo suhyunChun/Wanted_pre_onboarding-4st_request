@@ -19,7 +19,7 @@ const materials = [
   { id: 0, name: '알루미늄', select: false },
   { id: 1, name: '탄소강', select: false },
   { id: 2, name: '구리', select: false },
-  { id: 3, name: '합금강', select: false },
+  { id: 3, name: '스테인리스강', select: false },
   { id: 4, name: '강철', select: false },
 ];
 

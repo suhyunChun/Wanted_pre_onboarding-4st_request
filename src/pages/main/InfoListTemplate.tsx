@@ -7,7 +7,7 @@ const InfoListTemplate: FC = ({ children }) => {
 
 const Container = styled.div`
   max-width: 1130px;
-  margin: 50px auto;
+  margin: 30px auto;
 `;
 
 export default InfoListTemplate;

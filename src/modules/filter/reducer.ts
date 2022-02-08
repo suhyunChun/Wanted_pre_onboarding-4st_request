@@ -5,18 +5,13 @@ import { Filter, FilterAction, MaterialAction } from './types';
 
 const initailState: Filter = {
   filter: [],
-  material: [],
 };
 
-export const filter = createReducer<Filter, FilterAction>(initailState, {
+const filter = createReducer<Filter, FilterAction>(initailState, {
   [ADD_METHOD]: (state, action) =>
     produce(state, (draft) => {
       draft.filter.push(action.payload.method);
     }),
-  /* [DELETE_METHOD]: (state, action) =>
-    produce(state, (draft) => {
-      draft.filter.filter((method) => method !== action.payload.method);
-    }), */
   [DELETE_METHOD]: (state, action) => ({
     ...state,
     filter: state.filter.filter((method) => method !== action.payload.method),
@@ -27,9 +22,4 @@ export const filter = createReducer<Filter, FilterAction>(initailState, {
   }),
 });
 
-export const material = createReducer<Filter, MaterialAction>(initailState, {
-  [ADD_MATERIAL]: (state, action) =>
-    produce(state, (draft) => {
-      draft.material.push(action.payload.material);
-    }),
-});
+export default filter;

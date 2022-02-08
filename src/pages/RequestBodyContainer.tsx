@@ -54,7 +54,7 @@ const RequestBodyContainer = ({ isSidebar, handle }: Props) => {
         handle(false);
       }}
       style={{
-        display: isSidebar ? 'none' : 'flex',
+        display: isSidebar ? 'none' : '',
         background: isSidebar ? '#000000' : '',
         opacity: isSidebar ? '0.7' : '1',
       }}

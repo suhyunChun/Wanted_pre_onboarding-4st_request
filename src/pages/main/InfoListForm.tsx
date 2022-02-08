@@ -10,7 +10,7 @@ const InfoListForm: FC<OptionalProps> = ({ method, material, status }) => {
   const { infoList, sortedInfoList, isEmpty } = useInfoListState({ method, material, status });
 
   const currentInfoList = sortedInfoList.length === 0 ? infoList : sortedInfoList;
-
+  console.log(currentInfoList);
   return (
     <Container isEmpty={isEmpty}>
       {isEmpty ? (

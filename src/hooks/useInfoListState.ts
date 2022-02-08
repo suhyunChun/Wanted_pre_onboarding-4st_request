@@ -32,11 +32,14 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
       infoList.forEach((info: InfoType) => {
         let isSorted = false;
         for (let i = 0; i < currentSelectedSortNum; i++) {
-          if (info[currentSortName].includes(currentSort[i])) isSorted = true;
-          else {
-            isSorted = false;
+          if (info[currentSortName].includes(currentSort[i])) {
+            isSorted = true;
             break;
           }
+          // else {
+          //   isSorted = false;
+          //   break;
+          // }
         }
 
         const currentStoredInfoID = filteredInfoList.map((info) => {

@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { isToggleOn } from '../../modules/filter/actions';
 
 const Toggle = () => {
-  const [isToggleOn, setIsToggleOn] = useState(false);
+  const [isToggleOnInner, setIsToggleOn] = useState(false);
+
+  const dispatch = useDispatch();
+  const isToggleHanddle = useCallback(() => dispatch(isToggleOn()), [dispatch]);
 
   const handleClickToggle = () => {
-    setIsToggleOn(!isToggleOn);
+    setIsToggleOn(!isToggleOnInner);
+    isToggleHanddle();
   };
+
   return (
     <ToggleBox>
-      {isToggleOn ? (
+      {isToggleOnInner ? (
         <button type="submit" onClick={handleClickToggle}>
           <img alt="toggleOn" src="Image/toggle_on.png" />
         </button>

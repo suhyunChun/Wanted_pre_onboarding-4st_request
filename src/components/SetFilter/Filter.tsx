@@ -139,7 +139,7 @@ const Filter: FC = () => {
       {(checkedMethods.length > 0 || checkedMaterials.length > 0) && (
         <section>
           <RefreshBtn type="button" onClick={clickOnResetChecked}>
-            <img alt="되돌리기" src="Image/refresh_24px.png" />
+            <img alt="되돌리기" src="Image/icon_refresh.png" />
             <p>필터링 리셋</p>
           </RefreshBtn>
         </section>

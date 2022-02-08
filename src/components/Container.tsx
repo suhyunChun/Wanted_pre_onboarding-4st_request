@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import InfoListForm from '../pages/main/InfoListForm';
 import InfoListTemplate from '../pages/main/InfoListTemplate';
-import FilterLayout from './SetFilter/FilterLayout';
+import FilterLayout from './setFilter/FilterLayout';
 
 const Layout = styled.div`
   display: flex;

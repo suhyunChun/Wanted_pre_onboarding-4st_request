@@ -7,7 +7,7 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
   const [infoList, setInfoList] = useState<InfoType[]>([]);
   const [sortedInfoList, setSortedInfoList] = useState<InfoType[]>([]);
 
-  const [isEmpty, setIsEmpty] = useState<boolean>(true);
+  const [isEmpty, setIsEmpty] = useState<boolean>(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -88,10 +88,10 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
   }, [material]);
 
   useEffect(() => {
-    const currentStoredInfoListNum = sortedInfoList.length;
+    if (status) {
+      const currentInfoList = sortedInfoList.length === 0 ? infoList : sortedInfoList;
 
-    if (status && currentStoredInfoListNum !== 0) {
-      const filteredInfoList: InfoType[] = sortedInfoList.filter((info: InfoType) => info.status === '상담중');
+      const filteredInfoList: InfoType[] = currentInfoList.filter((info: InfoType) => info.status === '상담중');
       setSortedInfoList(filteredInfoList);
     } else {
       checkSortedInfoList(method, material, 'method', 'material');
@@ -100,13 +100,14 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
   }, [status]);
 
   useEffect(() => {
+    if (!isEmpty) return;
     const currentInfoListNum = sortedInfoList.length;
 
     if (currentInfoListNum === 0) setIsEmpty(true);
     else setIsEmpty(false);
   }, [sortedInfoList]);
 
-  return { sortedInfoList, isEmpty };
+  return { infoList, sortedInfoList, isEmpty };
 };
 
 export default useInfoListState;

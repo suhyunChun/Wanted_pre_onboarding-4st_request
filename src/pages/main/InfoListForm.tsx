@@ -7,7 +7,9 @@ import type { InfoType } from '../../types/components/infolist';
 import type { ContainerType } from '../../types/styles/infoListForm/ContainerType';
 
 const InfoListForm: FC<OptionalProps> = ({ method, material, status }) => {
-  const { sortedInfoList, isEmpty } = useInfoListState({ method, material, status });
+  const { infoList, sortedInfoList, isEmpty } = useInfoListState({ method, material, status });
+
+  const currentInfoList = sortedInfoList.length === 0 ? infoList : sortedInfoList;
 
   return (
     <Container isEmpty={isEmpty}>
@@ -16,8 +18,7 @@ const InfoListForm: FC<OptionalProps> = ({ method, material, status }) => {
           <FrontInformation>조건에 맞는 견적 요청이 없습니다.</FrontInformation>
         </GuideLine>
       ) : (
-        sortedInfoList.length !== 0 &&
-        sortedInfoList.map((info: InfoType, index) => {
+        currentInfoList.map((info: InfoType, index) => {
           return <CardBoard key={info.id} {...info} index={index} />;
         })
       )}

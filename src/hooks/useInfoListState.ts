@@ -17,8 +17,14 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
     getData();
   }, []);
 
-  const checkSortedInfoList = (currentSort: string[], prevSort: string[], currentSortName: string): void => {
+  const checkSortedInfoList = (
+    currentSort: string[],
+    prevSort: string[],
+    currentSortName: string,
+    prevSortName: string,
+  ): void => {
     const currentSelectedSortNum: number = currentSort.length;
+    const prevSelectedSortNum: number = prevSort.length;
 
     if (currentSelectedSortNum !== 0) {
       let filteredInfoList = sortedInfoList.slice();
@@ -47,7 +53,30 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
       });
 
       setSortedInfoList(filteredInfoList);
-    } else if (prevSort.length === 0) setSortedInfoList([]);
+    } else if (prevSelectedSortNum !== 0) {
+      const filteredInfoList = sortedInfoList.slice();
+
+      infoList.forEach((info: InfoType) => {
+        let isSorted = false;
+        for (let i = 0; i < prevSelectedSortNum; i++) {
+          if (info[prevSortName].includes(prevSort[i])) isSorted = true;
+          else {
+            isSorted = false;
+            break;
+          }
+        }
+
+        const currentStoredInfoID = filteredInfoList.map((info) => {
+          return info.id;
+        });
+
+        if (isSorted && !currentStoredInfoID.includes(info.id)) {
+          filteredInfoList.push(info);
+        }
+      });
+
+      setSortedInfoList(filteredInfoList);
+    } else setSortedInfoList([]);
   };
 
   useEffect(() => {
@@ -59,10 +88,14 @@ const useInfoListState = ({ method, material, status }: OptionalProps) => {
   }, [material]);
 
   useEffect(() => {
-    if (status) {
-      const targetInfoList: InfoType[] = sortedInfoList.length === 0 ? infoList : sortedInfoList;
-      const filteredInfoList: InfoType[] = targetInfoList.filter((info: InfoType) => info.status);
+    const currentStoredInfoListNum = sortedInfoList.length;
+
+    if (status && currentStoredInfoListNum !== 0) {
+      const filteredInfoList: InfoType[] = sortedInfoList.filter((info: InfoType) => info.status === '상담중');
       setSortedInfoList(filteredInfoList);
+    } else {
+      checkSortedInfoList(method, material, 'method', 'material');
+      checkSortedInfoList(material, method, 'material', 'method');
     }
   }, [status]);
 

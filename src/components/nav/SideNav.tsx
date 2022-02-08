@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface Props {
   isSidebar: boolean;
@@ -8,7 +8,7 @@ interface Props {
 
 const SideNav = ({ isSidebar, handle }: Props) => {
   return (
-    <SideSlider style={{ transform: isSidebar ? 'translateX(0vw)' : 'translateX(-100vw)' }}>
+    <SideSlider isSidebar={isSidebar}>
       <SlideSliderTitle>
         <SlideImg src="/Image/icon_slidelogo.png" />
       </SlideSliderTitle>
@@ -33,6 +33,15 @@ const SideSlider = styled.div<{ isSidebar?: boolean }>`
   background-color: white;
   z-index: 10;
   transition: transform 1s;
+  ${(props) =>
+    props.isSidebar
+      ? css`
+          transform: translateX(0vw);
+        `
+      : css`
+          transform: translateX(-100vw);
+        `}
+
   @media (max-width: 600px) {
     display: block;
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface Props {
   isSidebar: boolean;
@@ -8,7 +8,7 @@ interface Props {
 
 const Nav = ({ isSidebar, handle }: Props) => {
   return (
-    <NavContainer style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
+    <NavContainer isSidebar={isSidebar}>
       <BlinkBox
         onClick={() => {
           handle(false);
@@ -39,6 +39,17 @@ const NavContainer = styled.div<{ isSidebar?: boolean }>`
   background: #1565c0;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
   transition: all 1s;
+  ${(props) =>
+    props.isSidebar
+      ? css`
+          background: #000000;
+          opacity: 0.7;
+        `
+      : css`
+          background: '';
+          opacity: 1;
+        `}
+
   @media (max-width: 600px) {
     justify-content: flex-start;
   }

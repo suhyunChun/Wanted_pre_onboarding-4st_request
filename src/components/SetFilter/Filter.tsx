@@ -12,7 +12,7 @@ import {
 
 const methods = [
   { id: 0, name: '밀링', select: false },
-  { id: 1, name: '선방', select: false },
+  { id: 1, name: '선반', select: false },
 ];
 
 const materials = [

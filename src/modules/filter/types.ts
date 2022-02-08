@@ -6,5 +6,8 @@ export type MaterialAction = ActionType<typeof actions>;
 
 export type Filter = {
   filter: Array<string>;
+};
+
+export type Material = {
   material: Array<string>;
 };

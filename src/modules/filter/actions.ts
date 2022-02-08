@@ -6,9 +6,9 @@ export const ADD_METHOD = 'filter/ADD_METHOD';
 export const DELETE_METHOD = 'filter/DELETE_METHOD';
 export const CLEAR_METHOD = 'filter/CLEAR_METHOD';
 
-export const ADD_MATERIAL = 'filter/ADD_MATERIAL';
-export const DELETE_MATERIAL = 'filter/DELETE_MATERIAL';
-export const CLEAR_MATERIAL = 'filter/CLEAR_MATERIAL';
+export const ADD_MATERIAL = 'material/ADD_MATERIAL';
+export const DELETE_MATERIAL = 'material/DELETE_MATERIAL';
+export const CLEAR_MATERIAL = 'material/CLEAR_MATERIAL';
 
 export const addMethod = createStandardAction(ADD_METHOD)<{
   method: string;

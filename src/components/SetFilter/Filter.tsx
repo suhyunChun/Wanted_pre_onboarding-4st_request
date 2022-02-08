@@ -1,7 +1,14 @@
 import React, { ChangeEvent, FC, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { addMaterial, addMethod, clearMehotd, deleteMethod } from '../../modules/filter/actions';
+import {
+  addMaterial,
+  addMethod,
+  clearMaterial,
+  clearMehotd,
+  deleteMaterial,
+  deleteMethod,
+} from '../../modules/filter/actions';
 
 const methods = [
   { id: 0, name: '밀링', select: false },
@@ -31,6 +38,8 @@ const Filter: FC = () => {
   const removeCheckMethod = useCallback((method: string) => dispatch(deleteMethod({ method })), [dispatch]);
   const clearCheckMethod = useCallback(() => dispatch(clearMehotd()), [dispatch]);
   const updateCheckMaterial = useCallback((material: string) => dispatch(addMaterial({ material })), [dispatch]);
+  const removeCheckMaterial = useCallback((material: string) => dispatch(deleteMaterial({ material })), [dispatch]);
+  const clearCheckMaterial = useCallback(() => dispatch(clearMaterial()), [dispatch]);
 
   const handleChangeMethod = (e: ChangeEvent<HTMLInputElement>): void => {
     const { checked, name } = e.target;
@@ -50,6 +59,7 @@ const Filter: FC = () => {
       updateCheckMaterial(name);
     } else {
       SetCheckedMaterials(checkedMaterials.filter((material) => material !== name));
+      removeCheckMaterial(name);
     }
   };
 
@@ -57,6 +67,7 @@ const Filter: FC = () => {
     SetCheckedMethods([]);
     SetCheckedMaterials([]);
     clearCheckMethod();
+    clearCheckMaterial();
   };
 
   const showMethodBox = (): void => {

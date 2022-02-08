@@ -10,13 +10,14 @@ import { theme } from './styles/theme';
 import rootReducer from './modules';
 
 const store = createStore(rootReducer, composeWithDevTools());
+console.log(store.getState());
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <Provider store={store}>
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Router />
-    </Provider>
-  </ThemeProvider>,
+    </ThemeProvider>
+  </Provider>,
   document.getElementById('root'),
 );

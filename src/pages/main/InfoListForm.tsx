@@ -40,7 +40,7 @@ const Container = styled.div<ContainerType>`
 const GuideLine = styled.div`
   display: flex;
   justify-content: center;
-  padding: 38px 0;
+  padding: 38px 110px;
   text-align: center;
   border: 1px solid #c2c2c2;
   border-radius: 4px;

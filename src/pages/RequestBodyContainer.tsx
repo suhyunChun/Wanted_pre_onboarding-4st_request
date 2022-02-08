@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import FilterLayout from '../components/setFilter/FilterLayout';
+import FilterLayout from '../components/SetFilter/FilterLayout';
 import InfoListForm from './main/InfoListForm';
 import InfoListTemplate from './main/InfoListTemplate';
 
@@ -47,13 +47,17 @@ interface Props {
   isSidebar: boolean;
   handle(a: boolean): void;
 }
-const Container = ({ isSidebar, handle }: Props) => {
+const RequestBodyContainer = ({ isSidebar, handle }: Props) => {
   return (
     <LayoutBox
       onClick={() => {
         handle(false);
       }}
-      style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}
+      style={{
+        display: isSidebar ? 'none' : '',
+        background: isSidebar ? '#000000' : '',
+        opacity: isSidebar ? '0.7' : '1',
+      }}
     >
       <Layout style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
         <TextHeader>
@@ -69,4 +73,4 @@ const Container = ({ isSidebar, handle }: Props) => {
     </LayoutBox>
   );
 };
-export default Container;
+export default RequestBodyContainer;

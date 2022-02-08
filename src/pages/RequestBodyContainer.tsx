@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import FilterLayout from '../components/SetFilter/FilterLayout';
+import FilterLayout from '../components/setFilter/FilterLayout';
 import InfoListForm from './main/InfoListForm';
 import InfoListTemplate from './main/InfoListTemplate';
 

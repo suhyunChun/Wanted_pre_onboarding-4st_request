@@ -153,12 +153,11 @@ const FilteringLayout = styled.div`
 `;
 
 const FirstSection = styled.section`
-  width: 135px;
-  margin-right: 0px;
+  width: 102px;
 `;
 
 const SecondSection = styled.section`
-  width: 162px;
+  width: 80px;
 `;
 
 const DropdownBtn = styled.button`

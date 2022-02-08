@@ -89,10 +89,15 @@ const Filter: FC = () => {
   return (
     <FilteringLayout>
       <FirstSection onMouseEnter={showMethodBox} onMouseLeave={hiddenMethodBox}>
-        <DropdownBtn type="button">
+        <DropdownBtn type="button" isChecked={checkedMethods.length > 0}>
           <p>가공방식{checkedMethods.length > 0 && <span>({checkedMethods.length})</span>}</p>
-          <img alt="이미지" src="Image/icon_arrowdropdown.png" />
+          {checkedMethods.length > 0 ? (
+            <img alt="이미지" src="Image/icon_arrowDropDownCheck.png" />
+          ) : (
+            <img alt="이미지" src="Image/icon_arrowdropdown.png" />
+          )}
         </DropdownBtn>
+        <BlinkBox />
         {dropboxIsActive.methodsUl && (
           <UlBox>
             {methods.map((method) => {
@@ -113,10 +118,15 @@ const Filter: FC = () => {
       </FirstSection>
 
       <SecondSection onMouseEnter={showMaterialBox} onMouseLeave={hiddenMaterialBox}>
-        <DropdownBtn type="button">
-          <p>재료 {checkedMaterials.length > 0 && <span>({checkedMaterials.length})</span>}</p>
-          <img alt="이미지" src="Image/icon_arrowdropdown.png" />
+        <DropdownBtn type="button" style={{ width: '78px' }} isChecked={checkedMaterials.length > 0}>
+          <p>재료{checkedMaterials.length > 0 && <span>({checkedMaterials.length})</span>}</p>
+          {checkedMaterials.length > 0 ? (
+            <img alt="이미지" src="Image/icon_arrowDropDownCheck.png" />
+          ) : (
+            <img alt="이미지" src="Image/icon_arrowdropdown.png" />
+          )}
         </DropdownBtn>
+        <BlinkBox />
         {dropboxIsActive.materialsUl && (
           <UlBox>
             {materials.map((material) => {
@@ -137,17 +147,20 @@ const Filter: FC = () => {
       </SecondSection>
 
       {(checkedMethods.length > 0 || checkedMaterials.length > 0) && (
-        <section>
+        <ThirdSection>
           <RefreshBtn type="button" onClick={clickOnResetChecked}>
             <img alt="되돌리기" src="Image/icon_refresh.png" />
             <p>필터링 리셋</p>
           </RefreshBtn>
-        </section>
+        </ThirdSection>
       )}
     </FilteringLayout>
   );
 };
-
+const BlinkBox = styled.div`
+  width: 100px;
+  height: 5px;
+`;
 const FilteringLayout = styled.div`
   display: flex;
 `;
@@ -160,6 +173,14 @@ const SecondSection = styled.section`
   width: 80px;
 `;
 
+const ThirdSection = styled.section`
+  height: 32px;
+  margin-left: 40px;
+  position: relative;
+  bottom: 3px;
+  z-index: 1;
+`;
+
 const DropdownBtn = styled.button`
   width: 98px;
   height: 32px;
@@ -168,7 +189,12 @@ const DropdownBtn = styled.button`
   border-radius: 4px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  background: ${({ isChecked }: { isChecked?: boolean }) => (isChecked ? '#1565C0' : '#ffffff')};
+  color: ${({ isChecked }: { isChecked?: boolean }) => (isChecked ? '#ffffff' : '#323D45')};
+  &:hover {
+    border: 1px solid #2196f3;
+  }
   & > p,
   span {
     font-family: Roboto;
@@ -185,9 +211,10 @@ const UlBox = styled.ul`
   border-radius: 4px;
   margin: 0;
   padding-left: 12px;
-  padding-right: 64px;
+  padding-right: 29px;
   padding-top: 17px;
   padding-bottom: 17px;
+  z-index: 2;
   & > li {
     font-family: Noto Sans KR Medium;
     font-style: normal;
@@ -205,20 +232,21 @@ const UlBox = styled.ul`
 `;
 
 const RefreshBtn = styled.button`
-  position: relative;
   background: #ffffff;
   padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: none;
-  font-family: Noto Sans KR Regular;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  color: #2196f3;
   & > img {
     margin-right: 12px;
+  }
+  & > p {
+    font-family: Noto Sans KR Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #2196f3;
   }
 `;
 

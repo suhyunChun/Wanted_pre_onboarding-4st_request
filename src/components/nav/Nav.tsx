@@ -6,6 +6,29 @@ interface Props {
   handle(a: boolean): void;
 }
 
+const Nav = ({ isSidebar, handle }: Props) => {
+  return (
+    <NavContainer style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
+      <BlinkBox
+        onClick={() => {
+          handle(false);
+        }}
+      />
+      <MenuIcon
+        onClick={() => {
+          handle(true);
+        }}
+      />
+      <NavTitle />
+      <SideContainer>
+        <CompanyIcon />
+        <Company>A 가공 업체</Company>
+        <Divider />
+        <Logout>로그아웃</Logout>
+      </SideContainer>
+    </NavContainer>
+  );
+};
 const NavContainer = styled.div<{ isSidebar?: boolean }>`
   display: flex;
   justify-content: space-between;
@@ -85,31 +108,7 @@ const BlinkBox = styled.div`
   right: 0;
   top: 0;
   width: 20vw;
-  height: 100%;
+  height: 100vh;
 `;
-
-const Nav = ({ isSidebar, handle }: Props) => {
-  return (
-    <NavContainer style={{ background: isSidebar ? '#000000' : '', opacity: isSidebar ? '0.7' : '1' }}>
-      <BlinkBox
-        onClick={() => {
-          handle(false);
-        }}
-      />
-      <MenuIcon
-        onClick={() => {
-          handle(true);
-        }}
-      />
-      <NavTitle />
-      <SideContainer>
-        <CompanyIcon />
-        <Company>A 가공 업체</Company>
-        <Divider />
-        <Logout>로그아웃</Logout>
-      </SideContainer>
-    </NavContainer>
-  );
-};
 
 export default Nav;
